@@ -3,7 +3,7 @@ import "semantic-ui-css/semantic.min.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Home } from "./pages/home/Home";
 import { Favorite } from "./pages/favorite/Favorite";
-import { Header } from "./components/search-bar/header/Header";
+import { Header } from "./components/header/Header";
 
 import "./index.css";
 // tel aviv key = "215854"

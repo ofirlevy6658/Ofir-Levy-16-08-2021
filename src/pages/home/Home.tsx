@@ -1,13 +1,13 @@
 import React from "react";
 
-import { Search } from "../../components/search-bar/search-bar/Search";
+import { Search } from "../../components/search-bar/Search";
+import { CityCard } from "../../components/city-card/CityCard";
 
-interface Props {}
-
-export const Home = (props: Props) => {
+export const Home = () => {
 	return (
 		<>
 			<Search />
+			<CityCard />
 		</>
 	);
 };
