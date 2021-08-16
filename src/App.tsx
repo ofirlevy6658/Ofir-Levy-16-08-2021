@@ -1,7 +1,9 @@
 import React from "react";
 import "semantic-ui-css/semantic.min.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Home } from "./pages/home/Home";
+import { Favorite } from "./pages/favorite/Favorite";
 import { Header } from "./components/search-bar/header/Header";
-import { Search } from "./components/search-bar/Search";
 
 import "./index.css";
 
@@ -9,8 +11,17 @@ import "./index.css";
 function App() {
 	return (
 		<>
-			<Header></Header>
-			<Search></Search>
+			<Router>
+				<Header />
+				<Switch>
+					<Route path="/favorite">
+						<Favorite />
+					</Route>
+					<Route path="/">
+						<Home />
+					</Route>
+				</Switch>
+			</Router>
 		</>
 	);
 }
