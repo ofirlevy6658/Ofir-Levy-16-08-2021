@@ -6,7 +6,7 @@ import { Favorite } from "./pages/favorite/Favorite";
 import { Header } from "./components/search-bar/header/Header";
 
 import "./index.css";
-
+// tel aviv key = "215854"
 // API KEY 5QeQ8tV4KVVB6zA3a82qAtkZmwRTWvrg
 function App() {
 	return (
