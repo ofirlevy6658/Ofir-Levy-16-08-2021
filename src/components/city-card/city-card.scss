@@ -4,4 +4,12 @@
     border: solid black 1px;
     height: 70vh;
     width: 60vw;
+    span{
+        font-size: 2rem;
+        font-weight: bold;
+    }
+    .favorite-icon{
+        float: right;
+        cursor: pointer;
+    }
 }

@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const API_KEY = "5QeQ8tV4KVVB6zA3a82qAtkZmwRTWvrg";
+// const API_KEY = "5QeQ8tV4KVVB6zA3a82qAtkZmwRTWvrg";
+const API_KEY = "TdqIohPJNDwuMXd3AuZuZ0JsckDVQ0rL";
 
 export const apiSlice = createApi({
 	reducerPath: "api",
@@ -15,7 +16,7 @@ export const apiSlice = createApi({
 				},
 			}),
 			fetchCurrentWeather: builder.query<any, string>({
-				query(cityId) {
+				query(cityId = "215854") {
 					return `/currentconditions/v1/${cityId}?apikey=${API_KEY}`;
 				},
 			}),
