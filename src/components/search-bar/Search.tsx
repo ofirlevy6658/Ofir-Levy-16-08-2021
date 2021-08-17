@@ -29,7 +29,11 @@ export const Search = () => {
 				icon="search"
 				placeholder={term}
 				value={query}
-				onChange={(e) => setQuery(e.target.value)}
+				onChange={(e) => {
+					let value = e.target.value;
+					value = value.replace(/[^A-Za-z\s]/gi, "");
+					setQuery(value);
+				}}
 			/>
 		</div>
 	);

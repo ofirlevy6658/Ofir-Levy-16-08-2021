@@ -11,9 +11,13 @@ export const Header = () => {
 
 	return (
 		<div>
-			<Menu compact icon="labeled">
-				<h1>Weather app</h1>
+			<Menu compact icon="labeled" size="tiny" fluid={true}>
+				<Menu.Item>
+					<Icon name="sun" color="yellow" />
+					Weather app
+				</Menu.Item>
 				<Menu.Item
+					position="right"
 					name="home"
 					active={activeItem === "home"}
 					onClick={() => {
@@ -21,7 +25,7 @@ export const Header = () => {
 						history.push("/");
 					}}
 				>
-					<Icon name="home" />
+					<Icon name="home" color="red" />
 					Home
 				</Menu.Item>
 				<Menu.Item
@@ -32,7 +36,7 @@ export const Header = () => {
 						history.push("/favorite");
 					}}
 				>
-					<Icon name="favorite" />
+					<Icon name="favorite" color="orange" />
 					Favorite
 				</Menu.Item>
 			</Menu>

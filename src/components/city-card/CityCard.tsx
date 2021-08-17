@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useEffect, useState } from "react";
 import { Icon } from "semantic-ui-react";
-
+// import { Loader } from "semantic-ui-react";
 import { useAppSelector } from "../../app/hooks";
 import {
 	useFetchCityKeyQuery,
@@ -39,7 +39,7 @@ export const CityCard = () => {
 		});
 
 	useEffect(() => {
-		if (!cityIsLoading) {
+		if (city && !cityIsLoading) {
 			const cities = JSON.parse(localStorage.getItem("cities")!);
 			cities.includes(city[0]?.LocalizedName) ? setFav("red") : setFav("");
 		}
@@ -76,23 +76,32 @@ export const CityCard = () => {
 		cities.includes(city[0]?.LocalizedName) ? setFav("red") : setFav("");
 	};
 
-	return (
-		<div className="card-container">
-			<Icon
-				name="heart"
-				size="big"
-				className={`favorite-icon ${fav}`}
-				onClick={favoriteHandle}
-			></Icon>
-			<div className="center">
-				<p>
-					{city ? city[0]?.LocalizedName : ""}{" "}
-					{currentWeather ? currentWeather[0]?.Temperature.Metric.Value : ""}{" "}
-					&#8451;
-				</p>
-				<h4>{currentWeather ? currentWeather[0]?.WeatherText : ""}</h4>
-				<div className="cards">{renderWeekWeather}</div>
+	if (city?.length > 0)
+		return (
+			<div className="card-container">
+				<Icon
+					name="heart"
+					size="big"
+					className={`favorite-icon ${fav}`}
+					onClick={favoriteHandle}
+				></Icon>
+				<div className="center">
+					<p>
+						{city ? city[0]?.LocalizedName : ""}{" "}
+						{currentWeather ? currentWeather[0]?.Temperature.Metric.Value : ""}{" "}
+						&#8451;
+					</p>
+					<h4>{currentWeather ? currentWeather[0]?.WeatherText : ""}</h4>
+					<div className="cards">{renderWeekWeather}</div>
+				</div>
 			</div>
-		</div>
-	);
+		);
+	else
+		return (
+			<div className="card-container">
+				<div className="center">
+					<h1>city was not found</h1>
+				</div>
+			</div>
+		);
 };
