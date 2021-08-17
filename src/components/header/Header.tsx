@@ -13,7 +13,7 @@ export const Header = () => {
 		<div>
 			<Menu compact icon="labeled" size="tiny" fluid={true}>
 				<Menu.Item>
-					<Icon name="sun" color="yellow" />
+					<Icon name="cloud" color="blue" />
 					Weather app
 				</Menu.Item>
 				<Menu.Item
@@ -25,7 +25,7 @@ export const Header = () => {
 						history.push("/");
 					}}
 				>
-					<Icon name="home" color="red" />
+					<Icon name="home" color="grey" />
 					Home
 				</Menu.Item>
 				<Menu.Item
@@ -36,7 +36,7 @@ export const Header = () => {
 						history.push("/favorite");
 					}}
 				>
-					<Icon name="favorite" color="orange" />
+					<Icon name="favorite" color="yellow" />
 					Favorite
 				</Menu.Item>
 			</Menu>

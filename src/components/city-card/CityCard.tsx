@@ -86,12 +86,12 @@ export const CityCard = () => {
 					onClick={favoriteHandle}
 				></Icon>
 				<div className="center">
+					<p>{city ? city[0]?.LocalizedName : ""}</p>
 					<p>
-						{city ? city[0]?.LocalizedName : ""}{" "}
-						{currentWeather ? currentWeather[0]?.Temperature.Metric.Value : ""}{" "}
-						&#8451;
+						{currentWeather ? currentWeather[0]?.Temperature.Metric.Value : ""}
+						&#8451;&nbsp;&nbsp;&nbsp;
+						{currentWeather ? currentWeather[0]?.WeatherText : ""}
 					</p>
-					<h4>{currentWeather ? currentWeather[0]?.WeatherText : ""}</h4>
 					<div className="cards">{renderWeekWeather}</div>
 				</div>
 			</div>
