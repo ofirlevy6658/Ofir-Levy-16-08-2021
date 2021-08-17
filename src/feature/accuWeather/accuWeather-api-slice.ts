@@ -22,7 +22,7 @@ export const apiSlice = createApi({
 			}),
 			fetch5day: builder.query<any, string>({
 				query(cityId) {
-					return `/forecasts/v1/daily/5day/=/${cityId}.json?apikey=${API_KEY}`;
+					return `/forecasts/v1/daily/5day/${cityId}?apikey=${API_KEY}`;
 				},
 			}),
 		};
