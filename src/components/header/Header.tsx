@@ -4,8 +4,8 @@ import { useHistory } from "react-router-dom";
 
 import "./header.scss";
 // tsr
-interface Props {}
-export const Header = (props: Props) => {
+
+export const Header = () => {
 	const [activeItem, setActiveItem] = useState("");
 	let history = useHistory();
 
@@ -13,7 +13,6 @@ export const Header = (props: Props) => {
 		<div>
 			<Menu compact icon="labeled">
 				<h1>Weather app</h1>
-
 				<Menu.Item
 					name="home"
 					active={activeItem === "home"}
