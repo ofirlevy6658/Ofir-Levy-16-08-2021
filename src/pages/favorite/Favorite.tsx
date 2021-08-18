@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { FavoriteCard } from "../../components/favorite-card/FavoriteCard";
-import { useFetchCurrentWeatherQuery } from "../../feature/accuWeather/accuWeather-api-slice";
+import { useAppDispatch } from "../../app/hooks";
+import { setTerm } from "../../feature/search-term/search-term-slice";
 
 import "./favorite.scss";
 
@@ -10,14 +12,24 @@ interface city {
 }
 export const Favorite = () => {
 	const [cities] = useState(JSON.parse(localStorage.getItem("cities")!));
-	console.log(cities);
+	const dispatch = useAppDispatch();
+	let history = useHistory();
+
+	const clickHandle = (cityName: string) => {
+		dispatch(setTerm(cityName));
+		history.push("/");
+	};
 	if (cities) {
 		return (
 			<div className="container-fav">
 				{cities.map((el: city) => {
 					return (
 						<div key={el.Key}>
-							<FavoriteCard name={el.LocalizedName} keyCity={el.Key} />
+							<FavoriteCard
+								name={el.LocalizedName}
+								keyCity={el.Key}
+								click={clickHandle}
+							/>
 						</div>
 					);
 				})}
