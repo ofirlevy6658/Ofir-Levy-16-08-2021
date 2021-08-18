@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import termSlice from "../feature/search-term/search-term-slice";
+import darkModeSlice from "../feature/dark-mode/dark-mode-slice";
 import { apiSlice } from "../feature/accuWeather/accuWeather-api-slice";
 
 export const store = configureStore({
 	reducer: {
+		darkMode: darkModeSlice,
 		search: termSlice,
 		[apiSlice.reducerPath]: apiSlice.reducer,
 	},

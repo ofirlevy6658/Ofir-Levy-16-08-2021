@@ -24,6 +24,7 @@ const days = [
 export const CityCard = () => {
 	const [fav, setFav] = useState("");
 	const term = useAppSelector((state) => state.search.term);
+	const darkMode = useAppSelector((state) => state.darkMode.mode);
 	const {
 		data: city,
 		isSuccess,
@@ -84,7 +85,7 @@ export const CityCard = () => {
 
 	if (city?.length > 0)
 		return (
-			<div className="card-container">
+			<div className={`card-container ${darkMode ? "dark-mode" : ""}`}>
 				<Icon
 					name="heart"
 					size="big"

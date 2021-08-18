@@ -4,13 +4,15 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Home } from "./pages/home/Home";
 import { Favorite } from "./pages/favorite/Favorite";
 import { Header } from "./components/header/Header";
+import { useAppSelector } from "./app/hooks";
 
 import "./index.css";
-// tel aviv key = "215854"
-// API KEY 5QeQ8tV4KVVB6zA3a82qAtkZmwRTWvrg
+
 function App() {
+	const darkMode = useAppSelector((state) => state.darkMode.mode);
+
 	return (
-		<>
+		<div className={`${darkMode ? "global-container" : ""}`}>
 			<Router>
 				<Header />
 				<Switch>
@@ -22,7 +24,7 @@ function App() {
 					</Route>
 				</Switch>
 			</Router>
-		</>
+		</div>
 	);
 }
 

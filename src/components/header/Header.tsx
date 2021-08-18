@@ -1,20 +1,38 @@
 import React, { useState } from "react";
-import { Icon, Menu } from "semantic-ui-react";
 import { useHistory } from "react-router-dom";
-
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { setMode } from "../../feature/dark-mode/dark-mode-slice";
+import { Icon, Menu } from "semantic-ui-react";
+import { Radio } from "semantic-ui-react";
 import "./header.scss";
-// tsr
 
 export const Header = () => {
 	const [activeItem, setActiveItem] = useState("");
+	const [toggleDarkMode, setToggleDarkMode] = useState(false);
+	const dispatch = useAppDispatch();
+	const mode = useAppSelector((state) => state.darkMode.mode);
 	let history = useHistory();
 
 	return (
 		<div>
-			<Menu compact icon="labeled" size="tiny" fluid={true}>
+			<Menu compact icon="labeled" size="tiny" fluid={true} inverted={mode}>
 				<Menu.Item>
 					<Icon name="cloud" color="blue" />
 					Weather app
+				</Menu.Item>
+				<Menu.Item>
+					{!toggleDarkMode ? (
+						<Icon name="sun" color="yellow" />
+					) : (
+						<Icon name="moon" color="violet" />
+					)}
+					<Radio
+						toggle
+						onClick={() => {
+							dispatch(setMode(!toggleDarkMode));
+							setToggleDarkMode(!toggleDarkMode);
+						}}
+					/>
 				</Menu.Item>
 				<Menu.Item
 					position="right"
