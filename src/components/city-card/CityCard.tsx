@@ -39,9 +39,13 @@ export const CityCard = () => {
 		});
 
 	useEffect(() => {
-		if (city && !cityIsLoading) {
-			const cities = JSON.parse(localStorage.getItem("cities")!);
-			cities.includes(city[0]?.LocalizedName) ? setFav("red") : setFav("");
+		const cities = JSON.parse(localStorage.getItem("cities")!);
+		if (city && cities && !cityIsLoading) {
+			const findCity = cities.find(
+				(el: { LocalizedName: string }) =>
+					el.LocalizedName === city[0]?.LocalizedName
+			);
+			findCity ? setFav("red") : setFav("");
 		}
 	}, [fav, city, cityIsLoading]);
 
@@ -60,20 +64,22 @@ export const CityCard = () => {
 	);
 
 	const favoriteHandle = () => {
-		// cities
 		const cities = JSON.parse(localStorage.getItem("cities")!);
 		const cityIndex = cities?.findIndex(
-			(el: string) => el === city[0].LocalizedName
+			(el: any) => el?.LocalizedName === city[0].LocalizedName
 		);
 		if (cityIndex === undefined) {
-			localStorage.setItem("cities", JSON.stringify([city[0].LocalizedName]));
+			localStorage.setItem("cities", JSON.stringify([city[0]]));
 			return;
 		}
-		if (cityIndex === -1) cities.push(city[0].LocalizedName);
+		if (cityIndex === -1) cities.push(city[0]);
 		else cities.splice(cityIndex, 1);
 		localStorage.setItem("cities", JSON.stringify(cities));
-		console.log(cities);
-		cities.includes(city[0]?.LocalizedName) ? setFav("red") : setFav("");
+		const findCity = cities.find(
+			(el: { LocalizedName: string }) =>
+				el.LocalizedName === city[0].LocalizedName
+		);
+		findCity ? setFav("red") : setFav("");
 	};
 
 	if (city?.length > 0)
