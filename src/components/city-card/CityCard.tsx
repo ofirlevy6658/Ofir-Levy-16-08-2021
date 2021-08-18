@@ -1,7 +1,6 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import React, { useEffect, useState } from "react";
 import { Icon } from "semantic-ui-react";
-// import { Loader } from "semantic-ui-react";
+import { Loader } from "semantic-ui-react";
 import { useAppSelector } from "../../app/hooks";
 import {
 	useFetchCityKeyQuery,
@@ -25,6 +24,7 @@ export const CityCard = () => {
 	const [fav, setFav] = useState("");
 	const term = useAppSelector((state) => state.search.term);
 	const darkMode = useAppSelector((state) => state.darkMode.mode);
+	const tempUnit = useAppSelector((state) => state.tempUnit.mode);
 	const {
 		data: city,
 		isSuccess,
@@ -58,7 +58,11 @@ export const CityCard = () => {
 			return (
 				<div key={index} className="card">
 					<h3>{dayName}</h3>
-					<p>{convertToCel(el.Temperature.Maximum.Value)}&#8451;</p>
+					{tempUnit ? (
+						<p>{el.Temperature.Maximum.Value} ℉</p>
+					) : (
+						<p>{convertToCel(el.Temperature.Maximum.Value)} ℃</p>
+					)}
 				</div>
 			);
 		}
@@ -83,7 +87,15 @@ export const CityCard = () => {
 		findCity ? setFav("red") : setFav("");
 	};
 
-	if (city?.length > 0)
+	if (cityIsLoading || currentWeatherIsLoading || weekWeatherLoading)
+		return (
+			<div className="card-container">
+				<div className="center">
+					<Loader active inline />
+				</div>
+			</div>
+		);
+	else if (city?.length > 0)
 		return (
 			<div className={`card-container ${darkMode ? "dark-mode" : ""}`}>
 				<Icon
@@ -93,11 +105,13 @@ export const CityCard = () => {
 					onClick={favoriteHandle}
 				></Icon>
 				<div className="center">
-					<p>{city ? city[0]?.LocalizedName : ""}</p>
+					<p>{city[0]?.LocalizedName}</p>
 					<p>
-						{currentWeather ? currentWeather[0]?.Temperature.Metric.Value : ""}
-						&#8451;&nbsp;&nbsp;&nbsp;
-						{currentWeather ? currentWeather[0]?.WeatherText : ""}
+						{!tempUnit
+							? currentWeather[0]?.Temperature.Metric.Value + " ℃ "
+							: currentWeather[0]?.Temperature.Imperial.Value + " ℉ "}
+						&nbsp;&nbsp;&nbsp;
+						{currentWeather[0]?.WeatherText}
 					</p>
 					<div className="cards">{renderWeekWeather}</div>
 				</div>
