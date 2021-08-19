@@ -1,4 +1,26 @@
 .fav-card{
-    cursor: pointer;
+    text-align: center;
+    width: 10rem;
+    padding: 0.8rem;
+    border-radius:0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
     margin: 1.5rem;
+    &:hover{
+        background-color: #00000005;
+    }
 }
+
+.dark-mode{
+    border: solid white 1px;
+    .fav-card{
+            text-align: center;
+            width: 10rem;
+            padding: 0.8rem;
+            border-radius:0.5rem;
+            box-shadow: 0 1px 3px white;
+            margin: 1.5rem;
+            &:hover{
+                background-color: #ffffff25;
+            }    
+        }
+    }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Icon } from "semantic-ui-react";
-import { Loader } from "semantic-ui-react";
+// import { Loader } from "semantic-ui-react";
 import { useAppSelector } from "../../app/hooks";
 import {
 	useFetchCityKeyQuery,
@@ -90,12 +90,10 @@ export const CityCard = () => {
 	if (cityIsLoading || currentWeatherIsLoading || weekWeatherLoading)
 		return (
 			<div className="card-container">
-				<div className="center">
-					<Loader active inline />
-				</div>
+				<div className="center"></div>
 			</div>
 		);
-	else if (city?.length > 0)
+	if (city?.length > 0 && currentWeather && Weather5Day)
 		return (
 			<div className={`card-container ${darkMode ? "dark-mode" : ""}`}>
 				<Icon

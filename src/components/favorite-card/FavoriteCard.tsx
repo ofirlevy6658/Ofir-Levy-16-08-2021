@@ -17,13 +17,13 @@ export const FavoriteCard = ({ name, keyCity, click }: Props) => {
 
 	if (currentWeatherIsLoading)
 		return (
-			<div className="card fav-card">
+			<div className="fav-card">
 				<Loader active inline />
 			</div>
 		);
 	else if (currentWeather)
 		return (
-			<div className="card fav-card" onClick={() => click(name)}>
+			<div className="fav-card" onClick={() => click(name)}>
 				<p>{name}</p>
 				<p>
 					{tempUnit
@@ -34,7 +34,7 @@ export const FavoriteCard = ({ name, keyCity, click }: Props) => {
 		);
 	else
 		return (
-			<div className="card fav-card">
+			<div className="fav-card">
 				<p>{name}</p>
 			</div>
 		);

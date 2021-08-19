@@ -29,7 +29,7 @@ export const Header = () => {
 					) : (
 						<Icon name="moon" color="violet" />
 					)}
-					<br />
+					{!toggleDarkMode ? "Light" : "Dark"}
 					<Radio
 						toggle
 						onClick={() => {
