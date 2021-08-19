@@ -10,8 +10,6 @@ import { setTerm } from "./feature/search-term/search-term-slice";
 import "semantic-ui-css/semantic.min.css";
 import "./index.css";
 
-const API_KEY = "jZaHm4J2LZfcvQUPGcjWMVrtYaF8cV21";
-
 function App() {
 	const darkMode = useAppSelector((state) => state.darkMode.mode);
 	const dispatch = useAppDispatch();
@@ -19,7 +17,7 @@ function App() {
 	useEffect(() => {
 		navigator.geolocation.getCurrentPosition(async function (position) {
 			const { data } = await axios(
-				`http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${API_KEY}&q=${position.coords.latitude},${position.coords.longitude}`
+				`https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${process.env.REACT_APP_API_KEY}&q=${position.coords.latitude},${position.coords.longitude}`
 			);
 			dispatch(setTerm(data.LocalizedName));
 		});

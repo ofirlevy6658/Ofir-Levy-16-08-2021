@@ -1,11 +1,11 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const API_KEY = "jZaHm4J2LZfcvQUPGcjWMVrtYaF8cV21";
+const API_KEY = process.env.REACT_APP_API_KEY2;
 
 export const apiSlice = createApi({
 	reducerPath: "api",
 	baseQuery: fetchBaseQuery({
-		baseUrl: "http://dataservice.accuweather.com",
+		baseUrl: "https://dataservice.accuweather.com",
 	}),
 	endpoints(builder) {
 		return {

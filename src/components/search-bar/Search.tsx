@@ -5,8 +5,6 @@ import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { setTerm } from "../../feature/search-term/search-term-slice";
 import "./search.scss";
 
-const API_KEY = "TdqIohPJNDwuMXd3AuZuZ0JsckDVQ0rL";
-
 export const Search = () => {
 	const dispatch = useAppDispatch();
 	const term = useAppSelector((state) => state.search.term);
@@ -16,7 +14,7 @@ export const Search = () => {
 	useEffect(() => {
 		const fetchAutoComp = async () => {
 			const { data } = await axios.get(
-				`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${API_KEY}&q=${query}`
+				`https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${process.env.REACT_APP_API_KEY}&q=${query}`
 			);
 			setAutoComplete(data.map((el: any) => el.LocalizedName));
 		};
