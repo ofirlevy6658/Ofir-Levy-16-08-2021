@@ -26,7 +26,7 @@ function App() {
 	}, [dispatch]);
 
 	return (
-		<div className={`${darkMode ? "global-container" : ""}`}>
+		<div className={`${darkMode ? "darkMode-global-container" : ""}`}>
 			<Router>
 				<Header />
 				<Switch>
