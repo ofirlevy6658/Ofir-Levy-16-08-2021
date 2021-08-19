@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Icon } from "semantic-ui-react";
-// import { Loader } from "semantic-ui-react";
 import { useAppSelector } from "../../app/hooks";
 import {
 	useFetchCityKeyQuery,

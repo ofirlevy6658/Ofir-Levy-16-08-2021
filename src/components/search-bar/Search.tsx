@@ -12,7 +12,6 @@ export const Search = () => {
 	const term = useAppSelector((state) => state.search.term);
 	const [query, setQuery] = useState("");
 	const [autoCompleteData, setAutoComplete] = useState([""]);
-	// const { data } = useFetchCityKeyQuery(term);
 
 	useEffect(() => {
 		const fetchAutoComp = async () => {
@@ -24,7 +23,6 @@ export const Search = () => {
 
 		const timeout = setTimeout(() => {
 			if (query) {
-				console.log("in");
 				fetchAutoComp();
 			}
 		}, 700);
